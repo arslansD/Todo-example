@@ -38,11 +38,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    #thirdparty
+    'rest_framework',
+    'corsheaders',
+
     # local
     'todos',
 
-    #thirdparty
-    'rest_framework',
+
 ]
 
 REST_FRAMEWORK = {
@@ -54,11 +57,16 @@ REST_FRAMEWORK = {
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000', # default for React
+    'http://localhost:8000', # default for Django
 ]
 
 ROOT_URLCONF = 'django_project.urls'
@@ -134,5 +142,5 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
+CSRF_TRUSTED_ORIGINS = ['localhost:8000',]
 
